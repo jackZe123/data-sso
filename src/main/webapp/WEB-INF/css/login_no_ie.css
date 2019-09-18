@@ -1,0 +1,8 @@
+upload.cssbody #content{
+	margin-top: 0;
+    height: 380px;
+    background: url(../img/xingzhuang.png) repeat;
+    background-color: #5cb9ca;
+    background-blend-mode: hard-light;
+    background-size: 100% 100%;
+}

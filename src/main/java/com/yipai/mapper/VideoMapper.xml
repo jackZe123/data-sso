@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yipai.mapper.VideoMapper">
+    <resultMap id="BaseResultMap" type="com.yipai.pojo.Video">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="comment_num" jdbcType="INTEGER" property="commentNum" />
+        <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="browse_num" jdbcType="INTEGER" property="browseNum" />
+        <result column="video_state" jdbcType="INTEGER" property="videoState" />
+        <result column="oppose_num" jdbcType="INTEGER" property="opposeNum" />
+        <result column="support_num" jdbcType="INTEGER" property="supportNum" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, title, comment_num, collect_num, user_name, introduce, browse_num, video_state,
+    oppose_num, support_num, user_id, category_id, create_time, update_time
+  </sql>
+    <select id="selectByExample" parameterType="com.yipai.pojo.VideoExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from video
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.yipai.pojo.VideoExample">
+        delete from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.yipai.pojo.Video">
+    insert into video (id, title, comment_num,
+      collect_num, user_name, introduce,
+      browse_num, video_state, oppose_num,
+      support_num, user_id, category_id,
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{commentNum,jdbcType=INTEGER},
+      #{collectNum,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR},
+      #{browseNum,jdbcType=INTEGER}, #{videoState,jdbcType=INTEGER}, #{opposeNum,jdbcType=INTEGER},
+      #{supportNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.yipai.pojo.Video">
+        insert into video
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="commentNum != null">
+                comment_num,
+            </if>
+            <if test="collectNum != null">
+                collect_num,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="browseNum != null">
+                browse_num,
+            </if>
+            <if test="videoState != null">
+                video_state,
+            </if>
+            <if test="opposeNum != null">
+                oppose_num,
+            </if>
+            <if test="supportNum != null">
+                support_num,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="commentNum != null">
+                #{commentNum,jdbcType=INTEGER},
+            </if>
+            <if test="collectNum != null">
+                #{collectNum,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="browseNum != null">
+                #{browseNum,jdbcType=INTEGER},
+            </if>
+            <if test="videoState != null">
+                #{videoState,jdbcType=INTEGER},
+            </if>
+            <if test="opposeNum != null">
+                #{opposeNum,jdbcType=INTEGER},
+            </if>
+            <if test="supportNum != null">
+                #{supportNum,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.yipai.pojo.VideoExample" resultType="java.lang.Integer">
+        select count(*) from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update video
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.commentNum != null">
+                comment_num = #{record.commentNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.collectNum != null">
+                collect_num = #{record.collectNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.userName != null">
+                user_name = #{record.userName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.introduce != null">
+                introduce = #{record.introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.browseNum != null">
+                browse_num = #{record.browseNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.videoState != null">
+                video_state = #{record.videoState,jdbcType=INTEGER},
+            </if>
+            <if test="record.opposeNum != null">
+                oppose_num = #{record.opposeNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.supportNum != null">
+                support_num = #{record.supportNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.categoryId != null">
+                category_id = #{record.categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update video
+        set id = #{record.id,jdbcType=INTEGER},
+        title = #{record.title,jdbcType=VARCHAR},
+        comment_num = #{record.commentNum,jdbcType=INTEGER},
+        collect_num = #{record.collectNum,jdbcType=INTEGER},
+        user_name = #{record.userName,jdbcType=VARCHAR},
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+        browse_num = #{record.browseNum,jdbcType=INTEGER},
+        video_state = #{record.videoState,jdbcType=INTEGER},
+        oppose_num = #{record.opposeNum,jdbcType=INTEGER},
+        support_num = #{record.supportNum,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=INTEGER},
+        category_id = #{record.categoryId,jdbcType=INTEGER},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yipai.pojo.Video">
+        update video
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="commentNum != null">
+                comment_num = #{commentNum,jdbcType=INTEGER},
+            </if>
+            <if test="collectNum != null">
+                collect_num = #{collectNum,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=VARCHAR},
+            </if>
+            <if test="browseNum != null">
+                browse_num = #{browseNum,jdbcType=INTEGER},
+            </if>
+            <if test="videoState != null">
+                video_state = #{videoState,jdbcType=INTEGER},
+            </if>
+            <if test="opposeNum != null">
+                oppose_num = #{opposeNum,jdbcType=INTEGER},
+            </if>
+            <if test="supportNum != null">
+                support_num = #{supportNum,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yipai.pojo.Video">
+    update video
+    set title = #{title,jdbcType=VARCHAR},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      browse_num = #{browseNum,jdbcType=INTEGER},
+      video_state = #{videoState,jdbcType=INTEGER},
+      oppose_num = #{opposeNum,jdbcType=INTEGER},
+      support_num = #{supportNum,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <update id="commitZan" parameterType="int" >
+    update  video set support_num = support_num +1 where id = #{videoid}
+    </update>
+
+    <update id="cancelZan" parameterType="int">
+     update  video set support_num = support_num -1 where id = #{videoid}
+    </update>
+
+    <update id="commitLike" parameterType="int">
+    update  video set collect_num = collect_num +1 where id = #{videoid}
+    </update>
+
+    <update id="cancelLike" parameterType="int">
+     update  video set collect_num = collect_num -1 where id = #{videoid}
+    </update>
+    <select id="zanLenth" parameterType="int" resultType="java.lang.Integer">
+        select support_num from video where id=#{videoid}
+    </select>
+    <select id="collectLength" parameterType="int" resultType="java.lang.Integer">
+        select collect_num from video where id=#{videoid}
+    </select>
+    <select id="videoImgs" resultType="com.yipai.facade.response.GetVideoImgResponse">
+        select id as videoid,category_id as categoryid,img_url as imgurl from video where video_state = 1 limit 9
+    </select>
+    <select id="getImgByCategoryId" resultType="com.yipai.facade.response.GetVideoImgResponse">
+        select id as videoid,category_id as categoryid,img_url as imgurl  from video where video_state = 1 and category_id=#{categoryid} limit 9
+    </select>
+    <select id="getImgByPage" resultType="com.yipai.facade.response.GetVideoImgResponse">
+       select id as videoid,category_id as categoryid,img_url as imgurl from video where video_state = 1 and category_id=#{categoryid} limit ${(pageIndex - 1) *pageSize},${pageSize}
+    </select>
+    <select id="getVideoMessage" resultType="com.yipai.facade.response.GetVideoResponse">
+        select id,title,comment_num as commentNum,collect_num as collectNum,user_name as userName,introduce,browse_num as browseNum,video_state as videoState,oppose_num as opposeNum,support_num as supportNum,user_id as userId,category_id as categoryId,DATE_FORMAT(video.create_time,'%Y年%m月%d日') as createTime,DATE_FORMAT(video.update_time,'%Y年%m月%d日') as updateTime,video_url as videoUrl,img_url as imgUrl from video where id =#{videoid}
+    </select>
+    <select id="getRankingList" resultType="com.yipai.facade.response.RankingListResponse">
+        select  user_name as username,title as title,support_num as supportnum ,id as videoid from video where video_state=1 order by support_num desc limit 10
+    </select>
+    <insert id="insertVideo">
+        insert into video(title,comment_num,collect_num,user_name,browse_num,video_state,oppose_num,support_num,user_id,category_id,create_time,update_time,img_url,video_url) values(#{title},0,0,#{username},0,0,0,0,#{userid},#{categoryid},#{createTime},#{updateTime},#{imgurlname},#{videourlname})
+    </insert>
+    <select id="videoCount" resultType="java.lang.Integer">
+        select  count(*) from video where category_id=#{categoryid}
+    </select>
+    <update id="checkVideoByVideoId">
+        update video set video_state=1 where id= #{videoid}
+    </update>
+    <update id="checkVideoByVideoIdUnPass">
+        update video set video_state=2 where id= #{videoid}
+    </update>
+    <select id="getVideoIsPass" resultType="com.yipai.facade.response.GetVideoIsPassResponse">
+        select video.id as videoid,video.title as title,video.user_name as username,DATE_FORMAT(video.create_time,'%m月%d日') as createtime,category.category_name as categoryname from video,category where video.category_id=category.id and video_state=0
+    </select>
+    <update id="addBrowseNum">
+        update video set browse_num=browse_num+1 where id = #{videoid}
+    </update>
+</mapper>

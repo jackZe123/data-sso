@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #bfe2c7;
+}
+.manager_login {
+    width: 40%;
+    height: 50%;
+    background: white;
+    border: 1px solid #82b38b;
+    margin: 8% 10% 10% 25%;
+    background-color: #e9f9ed;
+    line-height: 60px;
+}
+.manager_login h1{
+    margin-left: 30%;
+}
+.manager_form{
+    margin-left: 24%;
+}
+.submit {
+    height: 35px;
+    width: 260px;
+    margin-left: 9%;
+    margin-top: 2%;
+}
+.submit:hover{
+    background-color: #6f9478;
+}

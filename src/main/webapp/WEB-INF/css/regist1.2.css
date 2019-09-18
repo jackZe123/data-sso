@@ -1,0 +1,198 @@
+body{
+	background-color: #ebebf7;
+}
+.w {
+	width: 1190px;
+	margin: 0 auto;
+}
+.w_middle{
+	width: 1600px;
+	margin: 0 auto;
+
+}
+
+a {
+	/*取消下划线*/
+	text-decoration: none;
+	color: #999;
+	font-size: 12px;
+}
+a:hover {
+	color: #c81623;
+}
+/*浮动的公共类*/
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+ul,h1 ,input{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+/*订单页面
+*/
+.pay{
+	margin-top: 20px;
+	height: 1200px;
+	position: relative;
+}
+
+.left_img {
+	margin-top: 50px;
+	float: left;
+	border-right: 1px solid #999;
+}
+
+.wid{
+	width: 64px;
+}
+.wid0{
+	width: 64px;
+}
+.red{
+	color: red;
+}
+.blue {
+	color: blue;
+}
+/*左边订单页面*/
+.pay_xiangqing{
+	padding-right: 13px;
+	margin-left: 13px;
+	margin-top: 50px;
+	float: left;
+	width: 477px;
+	height:661px;
+	float: left;
+	border-right: 1px solid #a8acaf;
+}
+.xiangqing{
+	position: relative;
+	padding: 14px 35px;
+	font-size: 20px;
+	height: 35px;
+	border-bottom: 1px solid #c5cacc;
+}
+.xiangqing a{
+	position: relative;
+	left: 120px;
+}
+.title {
+	height: 41px;
+	border-bottom: 1px solid #c5cacc;
+	padding:8px;
+}
+.hei{
+	height: 50px;
+}
+
+.title li{
+	float: left;
+	font-size: 12px;
+	color: #999;
+	padding-left: 16px;
+	margin: 5px 0px;
+}
+.img_adj{
+	display:none;
+	position: relative;
+	top:10px;
+	left:50px;
+}
+.title li:nth-child(1){
+	padding-right: 40px;
+	padding-left: 26px;
+	border-right: 1px solid #a09e9e;
+	color: #666;
+}
+.title li:nth-child(2){
+	margin: 5px 19px;
+}
+.content {
+	height: 26px;
+	border-bottom: 1px solid #eee;
+	padding:8px;
+}
+
+
+.ok .span1{
+	width: 108px;
+	height: 54px;
+	position: relative;
+	top: 46px;
+	left: 36px;
+	line-height: 50px;
+	background-color: #356d36;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+.logo{
+	position: relative;
+	top: -36px;
+	left: 275px;
+}
+.logo p{
+	color: #666;
+	font-size: 12px;
+}
+.width{
+	width: 48px;
+}
+
+.adjust{
+	position:relative;
+	float: left;
+	margin-left: 0px;
+}
+.adjust img{
+	position:absolute;
+	top:-6px;
+	left:195px;
+	display:none;
+}
+.adjust p{
+	margin:6px 0;
+}
+.hei p{
+	margin: 3px 0;
+}
+.regist_form{
+	margin-top: 44px;
+}
+#checkname{
+	display:none;
+}
+
+#xuehao {
+	display: none;
+}
+#phone {
+	display: none;
+}
+#email2 {
+	display: none;
+}
+#mima1 {
+	display: none;
+}
+.getregist1{
+	display: block;
+}
+.ok .getregist2{
+	background-color: red;
+	cursor: pointer;
+	display: none;
+}
+.return {
+	position: relative;
+	top:-20px;
+	left:350px;
+
+}

@@ -1,0 +1,36 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-color: #c5eccb;
+}
+.upload{
+    width: 40%;
+    height: 55%;
+    background: #e0fbe1;
+    border: 1px solid #aeadc5;
+    margin: 8% 10% 10% 25%;
+    line-height: 60px;
+}
+.upload h1{
+    margin-left: 36%;
+}
+.form_upload{
+    margin-left: 24%;
+}
+.f_img{
+    width: 259px;
+}
+.f_video{
+    width: 259px;
+}
+.btn_upload {
+    margin-left: 16%;
+    width: 78px;
+    margin-top: 12px;
+}
+.btn_upload:hover{
+    background-color: #acb5ff;
+}
