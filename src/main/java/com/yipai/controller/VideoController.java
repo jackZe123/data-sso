@@ -161,6 +161,9 @@ public class VideoController {
     @RequestMapping("/getImgByPage")
     @ResponseBody
     public HaoCangResult getImgByPage(@RequestParam Integer categoryid,@RequestParam Integer pageIndex,@RequestParam Integer pageSize,Model model){
+        if(categoryid==null){
+            categoryid=1;
+        }
         List<GetVideoImgResponse> getVideoImgResponses = new ArrayList<>();
         getVideoImgResponses = videoMapper.getImgByPage(categoryid,pageIndex,pageSize);
         return  HaoCangResult.ok(getVideoImgResponses);

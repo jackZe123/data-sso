@@ -391,7 +391,7 @@
         insert into video(title,comment_num,collect_num,user_name,browse_num,video_state,oppose_num,support_num,user_id,category_id,create_time,update_time,img_url,video_url) values(#{title},0,0,#{username},0,0,0,0,#{userid},#{categoryid},#{createTime},#{updateTime},#{imgurlname},#{videourlname})
     </insert>
     <select id="videoCount" resultType="java.lang.Integer">
-        select  count(*) from video where category_id=#{categoryid}
+        select  count(*) from video where category_id=#{categoryid} and video_state=1
     </select>
     <update id="checkVideoByVideoId">
         update video set video_state=1 where id= #{videoid}
